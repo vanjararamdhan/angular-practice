@@ -8,7 +8,7 @@
 <h1>Function call on button click</h1>
 <button (click)="handleClickEvent()" >Click Me</button>
 
-
+<!-- ---------If condition logic from TS file----------- -->
 <h1>Counter App</h1>
 <div>
   <h2 class="count">{{count}}</h2>
@@ -17,4 +17,39 @@
     <button (click)="handleCount('reset')"class="btn bg-black">Reset</button>
     <button (click)="handleCount('plus')" class="btn bg-green">Increment</button>
   </div>
+</div>
+
+<!-- -------IF condition from HTML------ -->
+<h1>If ELse | Control flow</h1>
+
+<button (click)="show()">Show</button>
+<button (click)="hide()">Hide</button>
+<button (click)="toggele()">Toggele</button>
+
+
+
+<!-- @if(display) {
+  <div style="width: 200px; height: 200px; background-color: green;">
+
+  </div>
+} -->
+<div *ngIf="display" style="width: 200px; height: 200px; background-color: green;">
+</div>
+
+<hr>
+
+<h1>For Loop</h1>
+
+<div *ngFor="let item of users;">
+  <h2>{{ item }}</h2>
+</div>
+
+
+<div *ngFor="let item of users;">
+  <h2>{{ item }}</h2>
+</div>
+<hr>
+
+<div *ngFor="let item of students;">
+  <h2>{{ item.email }}</h2>
 </div>
