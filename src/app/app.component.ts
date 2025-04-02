@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -81,8 +81,38 @@ students = [
 
 
 // --------------------------------------------------Effect with signal----------------------------------------------------------
-// userName = signal('Ram') 
+userName = signal('Ram') 
 
+constructor(){
+  effect(()=>{
+    console.log(this.userName());
+    
+  })
+}
+
+// ------------------------------------------------- Two way binding------------------------------------------------------------
+ name = "Ram"
+
+// ------------------------------------------------- To-Do List-----------------------------------------------------------
+
+task = "";
+taskList:{id:number, task:string} [] = []
+
+addTask(){
+  this.taskList.push({id:this.taskList.length+1, task: this.task})
+  this.task = "" //this make place hotldeer empty after adding task
+}
+
+deleteTask(taskId: number){
+  this.taskList =  this.taskList.filter((item)=>item.id!=taskId) // this js fillter method is responsible for removing match id
+}
+
+
+// ------------------------------------------------- Dynamic CSS-----------------------------------------------------------
+bgColor='green'
+
+// ------------------------------------------------- Directives check-----------------------------------------------------------
+showing = true
 
 // ------------------------------------------------------------------------------------------------------------
 

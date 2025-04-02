@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+onSubmit() {
+throw new Error('Method not implemented.');
+}
+email: any;
+password: any;
 
   constructor() { }
 

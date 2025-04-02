@@ -29,3 +29,9 @@
     margin: auto;
     font-size: 30px;
 }
+
+.task-list{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}

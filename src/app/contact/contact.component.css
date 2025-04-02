@@ -1,6 +1,5 @@
-.login-container {
-    width: 100%;
-    max-width: 400px;
+.contact-container {
+    max-width: 500px;
     margin: 50px auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -11,8 +10,8 @@
   }
   
   h2 {
-    margin-bottom: 20px;
     color: #333;
+    margin-bottom: 20px;
   }
   
   .input-group {
@@ -22,15 +21,20 @@
   
   label {
     display: block;
-    margin-bottom: 5px;
     font-weight: bold;
+    margin-bottom: 5px;
   }
   
-  input {
+  input, textarea {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+  }
+  
+  textarea {
+    height: 100px;
+    resize: vertical;
   }
   
   button {
