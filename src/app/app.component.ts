@@ -1,4 +1,5 @@
 import { Component, effect, signal } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,7 @@ import { Component, effect, signal } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-tour-of-heroes';
+  title = 'Mobile App';
 
   handleClickEvent() {
     console.log("Function Called");
@@ -83,7 +84,7 @@ students = [
 // --------------------------------------------------Effect with signal----------------------------------------------------------
 userName = signal('Ram') 
 
-constructor(){
+constructor(private router: Router){
   effect(()=>{
     console.log(this.userName());
     
@@ -115,5 +116,21 @@ bgColor='green'
 showing = true
 
 // ------------------------------------------------------------------------------------------------------------
+
+menuOpen: boolean = false;
+
+toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+    if (this.menuOpen) {
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    } else {
+      document.body.style.overflow = ''; // Restore scrolling
+    }
+}
+
+// Method to check if the current route is the NotFound route
+isNotFoundRoute(): boolean {
+  return this.router.url === '/not-found'; // Adjust this if your route is different
+}
 
 }

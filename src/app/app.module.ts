@@ -11,6 +11,8 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
   
 
 @NgModule({
@@ -20,7 +22,9 @@ import { AppRoutingModule } from './app-routing.module';
     SignupComponent,
     ProfileComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    NotFoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 <div class="login-container">
+  <h2 class="login-title">Welcome Back</h2>
+  
   <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-    <h2>Login</h2>
-
     <div class="input-group">
       <label for="email">Email</label>
       <input 
@@ -10,9 +10,10 @@
         name="email" 
         [(ngModel)]="email" 
         required 
-        #emailInput="ngModel">
+        #emailInput="ngModel"
+        placeholder="your.email@example.com">
       <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
-        Email is required and must be valid.
+        Please enter a valid email address
       </div>
     </div>
 
@@ -25,12 +26,21 @@
         [(ngModel)]="password" 
         required 
         minlength="6" 
-        #passwordInput="ngModel">
+        #passwordInput="ngModel"
+        placeholder="••••••••">
       <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
-        Password must be at least 6 characters long.
+        Password must be at least 6 characters
       </div>
     </div>
 
     <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    
+    <div class="forgot-password">
+      <a href="#">Forgot password?</a>
+    </div>
+    
+    <div class="sign-up-link">
+      Don't have an account? <a href="#">Sign up</a>
+    </div>
   </form>
 </div>

@@ -1,106 +1,57 @@
-<h1>My First App</h1>
-{{title}}
-<!-- <app-login></app-login> -->
-<app-signup></app-signup>
-<app-profile></app-profile>
+<div class="app-container">
+  <!-- App Header -->
+  <header class="app-header">
+    <h1 class="app-title">{{title}}</h1>
+  </header>
 
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav">
+    <button class="menu-button" (click)="toggleMenu()">☰</button>
+    <div class="mobile-menu" [class.open]="menuOpen">
+      <a routerLink="/login">Login</a>
+      <a routerLink="/about">About Us</a>
+      <a routerLink="/contact">Contact</a>
+    </div>
+    <div class="backdrop" [class.open]="menuOpen" (click)="toggleMenu()"></div>
+  </nav>
 
-<h1>Function call on button click</h1>
-<button (click)="handleClickEvent()" >Click Me</button>
+  <div class="container">
+    <!-- Counter App -->
+    <section class="section counter-container">
+      <h2 class="section-title">Counter App</h2>
+      <div>
+        <h2 class="count">{{count}}</h2>
+        <div class="counter-buttons">
+          <button (click)="handleCount('mins')" class="btn bg-red">-</button>
+          <button (click)="handleCount('reset')" class="btn bg-black">Reset</button>
+          <button (click)="handleCount('plus')" class="btn bg-green">+</button>
+        </div>
+      </div>
+    </section>
 
-<!-- ---------If condition logic from TS file----------- -->
-<h1>Counter App</h1>
-<div>
-  <h2 class="count">{{count}}</h2>
-  <div style="text-align: center;">
-    <button (click)="handleCount('mins')" class="btn bg-red">Decrement</button>
-    <button (click)="handleCount('reset')"class="btn bg-black">Reset</button>
-    <button (click)="handleCount('plus')" class="btn bg-green">Increment</button>
+    <!-- To-Do List -->
+    <section class="section todo-container">
+      <h2 class="section-title">To-Do List</h2>
+      <div class="todo-input">
+        <input [(ngModel)]="task" type="text" placeholder="Enter new task">
+        <button (click)="addTask()">Add</button>
+      </div>
+
+      <div *ngIf="taskList.length === 0" class="empty-state">
+        <p>No tasks yet. Add your first task above!</p>
+      </div>
+
+      <div *ngFor="let task of taskList" class="task-list">
+        <div class="task-id">{{task.id}}</div>
+        <div class="task-content">{{task.task}}</div>
+        <button (click)="deleteTask(task.id)" class="delete-btn">Delete</button>
+      </div>
+    </section>
+
+    <!-- Routing Section -->
+    <section class="section">
+      <h2 class="section-title">App Screens</h2>
+      <router-outlet></router-outlet>
+    </section>
   </div>
 </div>
-
-<!-- -------IF condition from HTML------ -->
-<h1>If ELse | Control flow</h1>
-
-<button (click)="show()">Show</button>
-<button (click)="hide()">Hide</button>
-<button (click)="toggele()">Toggele</button>
-
-
-
-<!-- @if(display) {
-  <div style="width: 200px; height: 200px; background-color: green;">
-
-  </div>
-} -->
-<div *ngIf="display" style="width: 200px; height: 200px; background-color: green;">
-</div>
-
-<hr>
-
-<h1>For Loop</h1>
-
-<div *ngFor="let item of users;">
-  <h2>{{ item }}</h2>
-</div>
-
-
-<div *ngFor="let item of users;">
-  <h2>{{ item }}</h2>
-</div>
-<hr>
-
-<div *ngFor="let item of students;">
-  <h2>{{ item.email }}</h2>
-</div>
-
-// -------------------------------------------------Effect with signal------------------------------------------------------------
-
-
-<h1>{{userName()}}</h1>
-<button (click)="userName.set('Syam')">Update Username</button> 
-
-<hr>
-
-// ------------------------------------------------- Two way binding------------------------------------------------------------
-<h1>Two way buinding</h1>
-<input [(ngModel)]="name" type="text" placeholder="Enter Name">
-
-<h3>{{name}}</h3>
-
-// ------------------------------------------------- To-Do List-----------------------------------------------------------
-
-<h1>To-Do List</h1>
-<input [(ngModel)]="task" type="text" placeholder="Enter new task">
-<button (click)="addTask()">Add Task</button>
-
-<ul class="task-list" *ngFor="let task of taskList">
-  <li> {{ task?.id }} </li>
-  <li> {{ task?.task }} </li>
-  <li><button (click)="deleteTask(task.id)">Delete</button></li>
-</ul>
-
-
-// ------------------------------------------------- Dynamic CSS-----------------------------------------------------------
-<h1 [style.background]="bgColor">Hello Dynamic CSS</h1>
-
-
-// ------------------------------------------------- Directives check-----------------------------------------------------------
- 
- <h1 *ngIf="showing">Directives</h1>
-
- // ------------------------------------------------- Routing ----------------------------------------------------
-
- <h1>Basic Routing</h1>
- <ul>
-   <li>
-     <a routerLink="/login">Login</a>
-   </li>
-   <li>
-    <a routerLink="/about">About</a>
-  </li>
-  <li>
-    <a routerLink="/contact">Contact</a>
-  </li>
- </ul>
- <router-outlet></router-outlet>
